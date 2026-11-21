@@ -1,0 +1,5 @@
+Algorithme,Accuracy,Balanced accuracy,Précision,Rappel,F1,MCC,ROC-AUC,PR-AUC,F1 par pli (moy ± ét.),Temps (s)
+Baseline (hasard),0.908,0.501,0.049,0.05,0.05,0.001,0.501,0.048,0.050 ± 0.025,0.4
+Random Forest,0.95,0.505,0.219,0.012,0.023,0.041,0.769,0.136,0.022 ± 0.029,10.6
+Gradient Boosting,0.909,0.575,0.158,0.206,0.179,0.133,0.75,0.123,0.179 ± 0.017,21.0
+SVM (RBF),0.704,0.71,0.109,0.716,0.189,0.193,0.763,0.13,0.190 ± 0.038,26.9
