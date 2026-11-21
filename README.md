@@ -108,3 +108,20 @@ Voir `outputs/classification_comparaison_2016_2025.png`.
 - Le calcul de surface a été effectué à 30 m de résolution (résolution
   Landsat) pour des raisons de performance de calcul, plutôt qu'à 10 m
   (résolution native Sentinel-2).
+
+Prédiction supervisée de la dégradation (3 algorithmes)
+
+Problème: classification binaire au niveau du pixel. À partir des observations 2016-2020 (NDVI, réflectances, relief), prédire si le NDVI maximum annuel moyen ne progresse pas en 2021-2025 (cible « dégradé » : 4,8 % des 11 999 pixels échantillonnés).
+
+Algorithmes comparés: Random Forest, Gradient Boosting, SVM (RBF), plus une baseline tirée au hasard. Validation croisée spatiale (5 plis, blocs de 0,1°).
+
+Baseline :Rappel (0,050), Précision (0,049), F1 (0,050), ROC-AUC(0,501), PR-AUC(0,048)
+Random Forest :Rappel (0,012 ), Précision (0,219), F1 (0,023), ROC-AUC(0,769), PR-AUC(0,136)
+Gradient Boosting :Rappel (0,206 ), Précision (0,158 ), F1 (0,179 ), ROC-AUC(0,750), PR-AUC(0,123)
+SVM (RBF) :Rappel (0,716), Précision (0,109), F1 (0,189), ROC-AUC(0,763), PR-AUC(0,130)
+
+Lecture: le SVM est retenu pour un usage de détection (meilleur rappel, F1 et MCC) au prix de nombreuses fausses alertes ; le Gradient Boosting limite les fausses alertes. Aucun algorithme n'est nettement supérieur.
+
+Limites la cible vient d'images satellite et mesure l'absence de progression du NDVI, pas une désertification confirmée sur le terrain ; Tillabéri concentre 66 % des pixels dégradés ; hyperparamètres non réglés.
+
+Résultats : `outputs/ml_*.png` et `outputs/ml_comparaison_metriques.csv`.
